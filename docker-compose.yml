@@ -1,0 +1,16 @@
+services:
+  db:
+    build:
+      context: ./database 
+    container_name: database
+    ports:
+      - "5432:5432"
+
+  blog:
+    build:
+      context: ./blog_app
+    container_name: blog_project
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
